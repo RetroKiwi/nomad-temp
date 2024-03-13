@@ -70,8 +70,8 @@
         },
         {
             "key": "field_65e0528aadeec",
-            "label": "Job Title",
-            "name": "job_title",
+            "label": "Job Position",
+            "name": "job_position",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -249,5 +249,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1709293173
+    "modified": 1710326975
 }

@@ -39,6 +39,13 @@
                 "operator": "==",
                 "value": "acf\/category-filter"
             }
+        ],
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/find-a-restaurant"
+            }
         ]
     ],
     "menu_order": 0,
@@ -50,5 +57,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1709308196
+    "modified": 1710250701
 }

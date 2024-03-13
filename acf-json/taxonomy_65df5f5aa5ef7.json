@@ -18,11 +18,11 @@
         "edit_item": "Edit Amenities",
         "view_item": "View Amenities",
         "update_item": "Update Amenities",
-        "add_new_item": "Add New Amenity",
-        "new_item_name": "New Amenity Name",
-        "parent_item": "Parent Amenity",
-        "parent_item_colon": "Parent Amenity:",
-        "search_items": "Search Amenity",
+        "add_new_item": "Add New Amenitie",
+        "new_item_name": "New Amenitie Name",
+        "parent_item": "Parent Amenitie",
+        "parent_item_colon": "Parent Amenitie:",
+        "search_items": "Search Amenitie",
         "most_used": "",
         "not_found": "No amenities found",
         "no_terms": "No amenities",
@@ -65,5 +65,5 @@
     "meta_box": "default",
     "meta_box_cb": "",
     "meta_box_sanitize_cb": "",
-    "modified": 1710311687
+    "modified": 1709648461
 }
