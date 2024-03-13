@@ -1,0 +1,13 @@
+{
+    "name": "acf/items-showcase",
+    "title": "items-showcase",
+    "description": "A custom items-showcase block that uses ACF fields.",
+    "style": [ "file:./items-showcase.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["items-showcase", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "items-showcase.php"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "name": "acf/general-filter",
+    "title": "general-filter",
+    "description": "A custom site-wide-banner block that uses ACF fields.",
+    "style": [ "file:./general-filter.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["general-filter", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "general-filter.php"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "name": "acf/discounts-static-banner",
+    "title": "discounts-static-banner",
+    "description": "A custom discounts-static-banner block that uses ACF fields.",
+    "style": [ "file:./discounts-static-banner.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["discounts-static-banner", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "discounts-static-banner.php"
+    }
+}

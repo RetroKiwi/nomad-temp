@@ -1,0 +1,13 @@
+{
+    "name": "acf/all-services-filter",
+    "title": "all-services-filter",
+    "description": "A custom all-services-filter block that uses ACF fields.",
+    "style": [ "file:./all-services-filter.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["all-services-filter", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "all-services-filter.php"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "name": "acf/main-section-title",
+    "title": "main-section-title",
+    "description": "A custom main-section-title block that uses ACF fields.",
+    "style": [ "file:./main-section-title.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["main-section-title", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "main-section-title.php"
+    }
+}

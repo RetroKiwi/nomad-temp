@@ -1,0 +1,13 @@
+{
+    "name": "acf/find-a-restaurant",
+    "title": "find-a-restaurant",
+    "description": "A custom find-a-restaurant block that uses ACF fields.",
+    "style": [ "file:./find-a-restaurant.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["find-a-restaurant", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "find-a-restaurant.php"
+    }
+}

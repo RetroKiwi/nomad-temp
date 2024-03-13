@@ -1,0 +1,13 @@
+{
+    "name": "acf/items-showcase-filter",
+    "title": "items-showcase-filter",
+    "description": "A custom items-showcase-filter block that uses ACF fields.",
+    "style": [ "file:./items-showcase-filter.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["items-showcase-filter", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "items-showcase-filter.php"
+    }
+}

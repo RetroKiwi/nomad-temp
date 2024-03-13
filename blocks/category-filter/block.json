@@ -1,0 +1,13 @@
+{
+    "name": "acf/category-filter",
+    "title": "category-filter",
+    "description": "A custom category-filter block that uses ACF fields.",
+    "style": [ "file:./category-filter.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["category-filter", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "category-filter.php"
+    }
+}

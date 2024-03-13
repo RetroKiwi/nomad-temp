@@ -1,0 +1,14 @@
+{
+    "name": "acf/banner-hero-homepage",
+    "title": "banner-hero-homepage",
+    "description": "A custom banner-hero-homepage block that uses ACF fields.",
+    "style": [ "file:./banner-hero-homepage.css" ],
+    "script": [ "file:./editor.js" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["banner-hero-homepage", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "banner-hero-homepage.php"
+    }
+}

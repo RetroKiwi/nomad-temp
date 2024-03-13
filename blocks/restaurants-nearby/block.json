@@ -1,0 +1,13 @@
+{
+    "name": "acf/restaurants-nearby",
+    "title": "restaurants-nearby",
+    "description": "A custom restaurants-nearby block that uses ACF fields.",
+    "style": [ "file:./restaurants-nearby.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["restaurants-nearby", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "restaurants-nearby.php"
+    }
+}

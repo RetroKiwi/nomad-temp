@@ -1,0 +1,13 @@
+{
+    "name": "acf/buy-rent-form-filter",
+    "title": "buy-rent-form-filter",
+    "description": "A custom buy-rent-form-filter block that uses ACF fields.",
+    "style": [ "file:./buy-rent-form-filter.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["buy-rent-form-filter", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "buy-rent-form-filter.php"
+    }
+}

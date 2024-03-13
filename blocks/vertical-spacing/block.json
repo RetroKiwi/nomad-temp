@@ -1,0 +1,13 @@
+{
+    "name": "acf/vertical-spacing",
+    "title": "vertical-spacing",
+    "description": "A custom vertical-spacing block that uses ACF fields.",
+    "style": [ "file:./vertical-spacing.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["vertical-spacing", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "vertical-spacing.php"
+    }
+}

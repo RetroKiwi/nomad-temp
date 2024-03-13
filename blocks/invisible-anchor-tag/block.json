@@ -1,0 +1,13 @@
+{
+    "name": "acf/invisible-anchor-tag",
+    "title": "invisible-anchor-tag",
+    "description": "A custom invisible-anchor-tag block that uses ACF fields.",
+    "style": [ "file:./invisible-anchor-tag.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["invisible-anchor-tag", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "invisible-anchor-tag.php"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "name": "acf/scrolling-text-stripe",
+    "title": "scrolling-text-stripe",
+    "description": "A custom scrolling-text-stripe block that uses ACF fields.",
+    "style": [ "file:./scrolling-text-stripe.css" ],
+    "script": [ "file:./editor.js" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["scrolling-text-stripe", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "scrolling-text-stripe.php"
+    }
+}

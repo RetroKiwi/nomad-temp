@@ -1,0 +1,13 @@
+{
+    "name": "acf/page-title-special",
+    "title": "page-title-special",
+    "description": "A custom page-title-special block that uses ACF fields.",
+    "style": [ "file:./page-title-special.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["page-title-special", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "page-title-special.php"
+    }
+}

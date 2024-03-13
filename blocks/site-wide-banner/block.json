@@ -1,0 +1,13 @@
+{
+    "name": "acf/site-wide-banner",
+    "title": "site-wide-banner",
+    "description": "A custom site-wide-banner block that uses ACF fields.",
+    "style": [ "file:./site-wide-banner.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["site-wide-banner", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "site-wide-banner.php"
+    }
+}

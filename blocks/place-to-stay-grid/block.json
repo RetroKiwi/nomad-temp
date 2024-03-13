@@ -1,0 +1,13 @@
+{
+    "name": "acf/place-to-stay-grid",
+    "title": "place-to-stay-grid",
+    "description": "A custom place-to-stay-grid block that uses ACF fields.",
+    "style": [ "file:./place-to-stay-grid.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["place-to-stay-grid", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "place-to-stay-grid.php"
+    }
+}

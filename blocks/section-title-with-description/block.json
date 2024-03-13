@@ -1,0 +1,13 @@
+{
+    "name": "acf/section-title-with-description",
+    "title": "section-title-with-description",
+    "description": "A custom section-title-with-description block that uses ACF fields.",
+    "style": [ "file:./section-title-with-description.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["section-title-with-description", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "section-title-with-description.php"
+    }
+}

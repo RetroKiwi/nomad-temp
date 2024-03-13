@@ -1,0 +1,13 @@
+{
+    "name": "acf/all-jobs-filter",
+    "title": "all-jobs-filter",
+    "description": "A custom all-jobs-filter block that uses ACF fields.",
+    "style": [ "file:./all-jobs-filter.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["all-jobs-filter", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "all-jobs-filter.php"
+    }
+}
