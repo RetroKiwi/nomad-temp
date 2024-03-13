@@ -1,0 +1,13 @@
+{
+    "name": "acf/test-block-nomadtribe",
+    "title": "test-block-nomadtribe",
+    "description": "A custom test-block-nomadtribe block that uses ACF fields.",
+    "style": [ "file:./test-block-nomadtribe.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["test-block-nomadtribe", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "test-block-nomadtribe.php"
+    }
+}

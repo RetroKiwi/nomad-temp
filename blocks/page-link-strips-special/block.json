@@ -1,0 +1,13 @@
+{
+    "name": "acf/page-link-strips-special",
+    "title": "page-link-strips-special",
+    "description": "A custom page-link-strips-special block that uses ACF fields.",
+    "style": [ "file:./page-link-strips-special.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["page-link-strips-special", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "page-link-strips-special.php"
+    }
+}

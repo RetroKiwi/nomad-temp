@@ -1,0 +1,13 @@
+{
+    "name": "acf/item-row-list",
+    "title": "item-row-list",
+    "description": "A custom item-row-list block that uses ACF fields.",
+    "style": [ "file:./item-row-list.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["item-row-list", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "item-row-list.php"
+    }
+}

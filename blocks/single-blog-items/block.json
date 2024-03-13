@@ -1,0 +1,13 @@
+{
+    "name": "acf/single-blog-items",
+    "title": "single-blog-items",
+    "description": "A custom single-blog-items block that uses ACF fields.",
+    "style": [ "file:./single-blog-items.css" ],
+    "category": "formatting",
+    "icon": "admin-comments",
+    "keywords": ["single-blog-items", "quote"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "single-blog-items.php"
+    }
+}

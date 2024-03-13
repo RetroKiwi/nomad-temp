@@ -13,6 +13,7 @@ $service_category_post_left = get_field('service_category_post_left');
 // Build a valid style attribute for background and text colors.
 
 ?>
+
 <section class="flex-col relative m-y-section p-y-section bg-darkest-black" style="gap: var(--item-gap-small)">
 			<div class="page-link-strip bg-black grid-fr-col-2 default-gap p-x-page">
 				<div class="page-link-strip-category flex-col flex-center flex-align-end relative height-100 ratio-16-9">

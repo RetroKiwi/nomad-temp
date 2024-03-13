@@ -28,19 +28,19 @@ $place_to_stay_link_8 = get_field('place_to_stay_link_8');
 ?>
 
 <!-- "find a place to stay" grid -->
-<section class="flex-col flex-align-center bg-darkest-black m-y-section-small p-x-page relative p-y-section">
-			<!-- <h2 class="text-center text-red m-b-section-small">Find a place to stay</h2> -->
+<section class="flex-col flex-align-center bg-darkest-black m-y-section p-x-page relative p-y-section">
+			<h2 class="text-center text-red m-b-section-small">Find a place to stay</h2>
 			<div class="grid bento-grid-showcase grid-fr-col-4">
 				<a href="<?php echo $place_to_stay_link_1['url']; ?>" class="contents">
 					<div class="image-cover bg-white grid-big">
 						<img src="<?php echo wp_get_attachment_image_url($place_to_stay_1);?>" alt="">
-						<h4 class="text-white absolute m-none bento-grid-title"><?php echo $place_to_stay_link_1['title']; ?></h4>
+						<h4 class="text-white absolute m-none" style="height: .5em; left: var(--text-offset); bottom: var(--text-offset); max-width: calc(100% - var(--text-offset) * 2)"><?php echo $place_to_stay_link_1['title']; ?></h4>
 					</div>
 				</a>
 				<a href="<?php echo $place_to_stay_link_2['url']; ?>" class="contents">
 					<div class="image-cover bg-white">
 						<img src="<?php echo wp_get_attachment_image_url($place_to_stay_2);?>" alt="">
-						<h4 class="text-white absolute m-none bento-grid-title"><?php echo $place_to_stay_link_2['title']; ?></h4>
+						<h4 class="text-white absolute m-none" style="height: .5em; left: var(--text-offset); bottom: var(--text-offset); max-width: calc(100% - var(--text-offset) * 2)"><?php echo $place_to_stay_link_2['title']; ?></h4>
 					</div>
 				</a>
 				<a href="<?php echo $place_to_stay_link_3['url']; ?>" class="contents">
@@ -52,31 +52,31 @@ $place_to_stay_link_8 = get_field('place_to_stay_link_8');
 				<a href="<?php echo $place_to_stay_link_4['url']; ?>" class="contents">
 					<div class="image-cover bg-white">
 						<img src="<?php echo wp_get_attachment_image_url($place_to_stay_4);?>" alt="">
-						<h4 class="text-white absolute m-none bento-grid-title"><?php echo $place_to_stay_link_4['title']; ?></h4>
+						<h4 class="text-white absolute m-none" style="height: .5em; left: var(--text-offset); bottom: var(--text-offset); max-width: calc(100% - var(--text-offset) * 2)"><?php echo $place_to_stay_link_4['title']; ?></h4>
 					</div>
 				</a>
 				<a href="<?php echo $place_to_stay_link_5['url']; ?>" class="contents">
 					<div class="image-cover bg-white grid-tall">
 						<img src="<?php echo wp_get_attachment_image_url($place_to_stay_5);?>" alt="">
-						<h4 class="text-white absolute m-none bento-grid-title"><?php echo $place_to_stay_link_5['title']; ?></h4>
+						<h4 class="text-white absolute m-none" style="height: .5em; left: var(--text-offset); bottom: var(--text-offset); max-width: calc(100% - var(--text-offset) * 2)"><?php echo $place_to_stay_link_5['title']; ?></h4>
 					</div>
 				</a>
 				<a href="<?php echo $place_to_stay_link_6['url']; ?>" class="contents">
 					<div class="image-cover bg-white">
 						<img src="<?php echo wp_get_attachment_image_url($place_to_stay_6);?>" alt="">
-						<h4 class="text-white absolute m-none bento-grid-title"><?php echo $place_to_stay_link_6['title']; ?></h4>
+						<h4 class="text-white absolute m-none" style="height: .5em; left: var(--text-offset); bottom: var(--text-offset); max-width: calc(100% - var(--text-offset) * 2)"><?php echo $place_to_stay_link_6['title']; ?></h4>
 					</div>
 				</a>
 				<a href="<?php echo $place_to_stay_link_7['url']; ?>" class="contents">
 					<div class="image-cover bg-white">
 						<img src="<?php echo wp_get_attachment_image_url($place_to_stay_7);?>" alt="">
-						<h4 class="text-white absolute m-none bento-grid-title"><?php echo $place_to_stay_link_7['title']; ?></h4>
+						<h4 class="text-white absolute m-none" style="height: .5em; left: var(--text-offset); bottom: var(--text-offset); max-width: calc(100% - var(--text-offset) * 2)"><?php echo $place_to_stay_link_7['title']; ?></h4>
 					</div>
 				</a>
 				<a href="<?php echo $place_to_stay_link_8['url']; ?>" class="contents">
 					<div class="image-cover bg-white">
 						<img src="<?php echo wp_get_attachment_image_url($place_to_stay_8);?>" alt="">
-						<h4 class="text-white absolute m-none bento-grid-title"><?php echo $place_to_stay_link_8['title']; ?></h4>
+						<h4 class="text-white absolute m-none" style="height: .5em; left: var(--text-offset); bottom: var(--text-offset); max-width: calc(100% - var(--text-offset) * 2)"><?php echo $place_to_stay_link_8['title']; ?></h4>
 					</div>
 				</a>
 			</div>
