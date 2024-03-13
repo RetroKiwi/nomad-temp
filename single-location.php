@@ -10,6 +10,7 @@ $accomodation_amenities = get_field('accomodation_amenities');
 $accomodation_location = get_field('accomodation_location');
 $accommodation_listing_link = get_field('accommodation_listing_link');
 $accomodation_short_description = get_field('accomodation_short_description');
+$accomodation_amenities = get_field('accomodation_amenities');
 $accomodation_square_footage = get_field('accomodation_square_footage');
 $accomodation_price = get_field('accomodation_price');
 $accomodation_about_link = get_field('accomodation_about_link');

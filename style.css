@@ -1002,7 +1002,6 @@ body {
 	/* --nomad-primary-red: #980e12; */
 	--nomad-primary-red-dark: var(--dark-red);
 	--nomad-transparent-light: #f0f0f022;
-	--transparent: transparent;
 
 	--section-margin-small: 8rem;
 	--section-margin: 16rem;
@@ -1020,8 +1019,8 @@ body {
 	/* --body-font: "Sofia Sans Extra Condensed"; */
 	--body-font: "Sofia Sans";
 
-	/* --base-font-size: 1.5em; */
-	--base-font-size: 1.2rem;
+	--base-font-size: 1.5rem;
+	/* --base-font-size: 1rem; */
 }
 
 /* BASICS */
@@ -2159,8 +2158,7 @@ header {
 }
 
 .bento-grid-showcase {
-	/* --text-offset: 3vw; */
-	--text-offset: 1rem;
+	--text-offset: 3vw;
 	gap: 2rem;
 	grid-template-rows: repeat(auto, 1fr);
 }
@@ -2212,17 +2210,6 @@ header {
 	grid-column: span 1;
 	grid-row: span 2;
 	aspect-ratio: auto;
-}
-.bento-grid-showcase .bento-grid-title {
-	left: var(--text-offset);
-    bottom: var(--text-offset);
-    max-width: calc(100% - var(--text-offset)* 2);
-    aspect-ratio: auto;
-    line-height: 1em;
-    filter: drop-shadow(0px 0px 2px black);
-}
-.bento-grid-showcase *:hover .bento-grid-title {
-	filter: drop-shadow(0px 0px 2px transparent);
 }
 
 footer h4 {
@@ -2459,14 +2446,13 @@ dialog {
 	position: fixed;
 }
 dialog::backdrop {
-	background-color: #000a;
-	pointer-events: all;
+	background-color: #0008;
 }
 
 /* item card grid and list */
 
-.item-card-grid:not(:has(.item-card)),
-.item-card-list:not(:has(.item-card)) {
+.item-card-grid,
+.item-card-list {
 	min-height: 50rem;
 }
 :is(.item-card-grid, .item-card-list):not(:has(*)) {
@@ -2541,7 +2527,7 @@ dialog::backdrop {
 	/* max-height: 0px; */
 }
 .item-card-grid .item-card:hover .item-card-action-button {
-	/* margin-top: 3rem; */
+	margin-top: 3rem;
 }
 .item-card-list .item-card-action-button {
 	min-width: fit-content;
@@ -2668,7 +2654,6 @@ dialog::backdrop {
 	right: 0;
 	height: 100%;
 	padding: 14rem 0;
-	/* overflow-x: hidden; */
 }
 .item-card-layout-switch {
 	display: flex;
@@ -2676,7 +2661,6 @@ dialog::backdrop {
 	width: min-content;
 	position: sticky;
 	left: 100%;
-	/* left: 0%; */
 	top: 50%;
 	width: 5rem;
 	z-index: 100;
@@ -2838,6 +2822,10 @@ dialog {
 }
 dialog[open] {
 	display: flex;
+}
+dialog::backdrop {
+	background-color: #1118;
+	pointer-events: all;
 }
 
 .dialog-header {

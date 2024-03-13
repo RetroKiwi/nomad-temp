@@ -3,7 +3,6 @@
 Template Name: Blog Template
 */
 get_header();
-global $post;
 ?>
 
 <!-- Banner -->
@@ -14,15 +13,9 @@ global $post;
 </section>
 
 <!-- Blog Content -->
-<section class="flex-col flex-align-center" style="aspect-ratio: 5 / 2;">
-	<div class="image-cover height-100 width-100">
-        <!-- TODO: partial parallax effect -->
-		<img class="right-50 bottom-50" style="position: absolute !important; translate: 50% 50%" src="<?php echo get_the_post_thumbnail_url( $post, 'full' );?>" alt="">
-	</div>
-</section>
 <section class="width-full flex-col flex-align-center">
     <div class="blog-page flex-col flex-align-center width-blog m-y-section-small">
-    <!-- <?php the_post_thumbnail(); ?> -->
+    <?php the_post_thumbnail(); ?>
         <!-- Blog Title -->
         <h1 class="text-center m-b-section-small text-red"><?php the_title(); ?></h1>
 
@@ -44,62 +37,58 @@ global $post;
 
 
 
-
-
-
-
-
-
-
-
 <?php
 // Retrieve ACF fields
 $showcase_items = get_field('showcase_items');
-// get category here from ACF
-// $custom_post_type =  get_field('select_post_type');
-$custom_post_type =  'post';
-// $select_post_type_link = get_field('select_post_type_link');
-$select_post_type_link = array(
-    'url'=>'https://www.google.com/',
-    'title'=>'Google test link'
-);
-// $background_color = get_field('background_color')['value'];
-$background_color = 'transparent';
-
 ?>
 
+<section class="m-y-section">
 
-<section class="m-b-section relative" style="padding: 3rem 0; background: var(--<?php echo $background_color; ?>);">
-    <div class="item-card-grid p-x-page m-x-auto m-b-section-small">
+    <div class="slider grid-fr-col-3 p-x-page m-x-auto m-y-section-small">
         <?php
-            $args = array(
-                'post_type' => $custom_post_type, // Change post type if needed
-                'posts_per_page' => 3, // Number of posts to display
-                'order' => 'DESC', // Order of posts (DESC for latest first)
-            );
+        $args = array(
+            'post_type' => 'post', // Change post type if needed
+            'posts_per_page' => 3, // Number of posts to display
+            'order' => 'DESC', // Order of posts (DESC for latest first)
+        );
 
-            $query = new WP_Query($args);
+        $query = new WP_Query($args);
 
-            if ($query->have_posts()) {
-                while ($query->have_posts()) {
-                    $query->the_post();
-                    echo_item_card_html();
-                }
-                wp_reset_postdata();
-            } else {
-                echo 'No posts found';
-            }
+        if ($query->have_posts()) :
+            while ($query->have_posts()) : $query->the_post();
+        ?>
+                <a href="<?php the_permalink(); ?>" class="contents">
+                    <div class="item-card nomad-corners">
+                        <div class="item-card-image nomad-corners image-cover ratio-4-3">
+                            <?php if (has_post_thumbnail()) : ?>
+                                <?php the_post_thumbnail(); ?>
+                            <?php else : ?>
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/media/images/squareimgplaceholder.png" alt="">
+                            <?php endif; ?>
+                        </div>
+                        <div class="item-card-content">
+                            <div class="flex-row flex-between text-light-gray uppercase" style="margin-top: 1rem">
+                                <small><?php echo get_the_category_list(', '); ?></small>
+                                <small><?php echo get_the_date(); ?></small>
+                            </div>
+                            <h3 class="text-red text-dense-lines"><?php the_title(); ?></h3>
+                            <p class="text-justify"><?php echo wp_trim_words(get_the_content(), 20); ?></p>
+                        </div>
+                        <div>
+                            <a href="<?php the_permalink(); ?>" class="primary size-large">Read more</a>
+                        </div>
+                    </div>
+                </a>
+        <?php
+            endwhile;
+            wp_reset_postdata();
+        else :
+            echo 'No posts found';
+        endif;
         ?>
     </div>
-    <?php if (isset($select_post_type_link)) : ?>
-        <div class="flex-row flex-center width-100">
-            <a class="contents" href="<?php echo esc_url( $select_post_type_link['url'] ); ?>">
-                <button class="primary-inverse size-huge"><?php echo esc_html( $select_post_type_link['title'] ); ?></button>
-            </a>
-        </div>
-    <?php endif; ?>
-</section>
 
+</section>
 
 
 

@@ -22,6 +22,129 @@ $amenities = get_terms(array(
     
 
 
+
+<div class="tabs">
+    <ul class="tab-links">
+        <?php if (have_rows('tabs_switch_repeater')) : ?>
+            <?php $i = 1; ?>
+            <?php while (have_rows('tabs_switch_repeater')) : the_row(); ?>
+                <li><a href="#" onclick="showTab(<?php echo $i; ?>); return false;"><?php the_sub_field('tab_title'); ?></a></li>
+                <?php $i++; ?>
+            <?php endwhile; ?>
+        <?php endif; ?>
+    </ul>
+    <div class="tab-content">
+        <?php if (have_rows('tabs_switch_repeater')) : ?>
+            <?php $i = 1; ?>
+            <?php while (have_rows('tabs_switch_repeater')) : the_row(); ?>
+                <div id="tab-<?php echo $i; ?>" class="tab">
+                    <?php $tabs_post_type = get_sub_field('tab_content'); ?>
+					
+			<!-- item card list and grid with switch component -->
+<section class="m-b-section relative">
+    <!-- this is the switch component -->
+    <div class="item-card-layout-switch-track">
+        <div class="item-card-layout-switch">
+            <span class="label label-top">Layout</span>
+            <button class="grid"><i class="fa-solid fa-grip"></i></button>
+            <button class="list"><i class="fa-solid fa-grip-lines"></i></button>
+            <span class="label label-bottom">Layout</span>
+        </div>
+    </div>
+    <!-- this is the list / grid itself -->
+    <div id="filtered-posts" class="item-card-grid p-x-page m-x-auto m-y-section-small">
+        <!-- AJAX results will be inserted here -->
+    
+ 
+					<?php
+$args = array(
+    'post_type'      => $tabs_post_type, // Replace 'your_custom_post_type' with the name of your custom post type
+    'posts_per_page' => 9, // Number of posts to display
+    'orderby'        => 'date', // Order posts by date
+    'order'          => 'DESC', // Display posts in descending order
+);
+
+$query = new WP_Query( $args );
+
+if ( $query->have_posts() ) :
+    while ( $query->have_posts() ) :
+        $query->the_post();
+        ?>
+        <a href="<?php the_permalink(); ?>" class="contents">
+                    <div class="item-card nomad-corners">
+                        <div class="item-card-image nomad-corners image-cover ratio-4-3">
+                            <?php if (has_post_thumbnail()) : ?>
+                                <?php the_post_thumbnail(); ?>
+                            <?php else : ?>
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/media/images/squareimgplaceholder.png" alt="">
+                            <?php endif; ?>
+                        </div>
+                        <div class="item-card-content">
+                            <div class="flex-row flex-between text-light-gray uppercase" style="margin-top: 1rem">
+                                <small><?php echo get_the_category_list(', '); ?></small>
+                                <small><?php echo get_the_date(); ?></small>
+                            </div>
+                            <h3 class="text-red text-dense-lines"><?php the_title(); ?></h3>
+                            <p class="text-justify"><?php echo wp_trim_words(get_the_content(), 20); ?></p>
+                        </div>
+                        <div>
+                            <a href="<?php the_permalink(); ?>">
+                                <button class="primary size-large">Read more</button>
+                            </a>
+                        </div>
+                    </div>
+                </a>
+        <?php
+    endwhile;
+    wp_reset_postdata(); // Reset post data query
+else :
+    echo 'No posts found';
+endif;
+?>
+		   </div>
+</section>
+
+                </div>
+                <?php $i++; ?>
+            <?php endwhile; ?>
+        <?php endif; ?>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const tabs = document.querySelectorAll('.tab-content .tab');
+        const links = document.querySelectorAll('.tab-links a');
+
+        // Hide all tab contents except for the first one
+        for (let i = 1; i < tabs.length; i++) {
+            tabs[i].style.display = 'none';
+        }
+
+        // Set the first tab link as active
+        links[0].classList.add('current');
+    });
+
+    function showTab(tabNumber) {
+        const tabs = document.querySelectorAll('.tab-content .tab');
+        const links = document.querySelectorAll('.tab-links a');
+
+        for (let i = 0; i < tabs.length; i++) {
+            tabs[i].style.display = 'none';
+        }
+
+        for (let i = 0; i < links.length; i++) {
+            links[i].classList.remove('current');
+        }
+
+        document.getElementById('tab-' + tabNumber).style.display = 'block';
+        links[tabNumber - 1].classList.add('current');
+    }
+</script>
+
+
+
+
 <!-- filter components -->
 <section id="taxonomy_filter" class="flex-col m-t-section-small">
     <div class="section-header width-full m-x-auto" style="padding: 5rem var(--padding-page)">
@@ -33,8 +156,7 @@ $amenities = get_terms(array(
                 <fieldset class="contents">
                     <?php foreach ($available_for as $term) : ?>
                         <label class="rent-buy-filter-option">
-                            <!-- <input type="radio" class="taxonomy2-checkbox" name="taxonomy2-checkbox" value="<?php echo $term->slug; ?>"> -->
-                            <input type="radio" class="<?php echo $available_for_key; ?>-taxonomy" name="taxonomy2-checkbox" value="<?php echo $term->slug; ?>">
+                            <input type="radio" class="taxonomy2-checkbox" name="taxonomy2-checkbox" value="<?php echo $term->slug; ?>">
                             <?php echo $term->name; ?>
                         </label>
                         <br>
@@ -119,8 +241,7 @@ $amenities = get_terms(array(
                                 <label class="amenities-filter-option">
                                     <i class="fa-regular fa-square"></i>
                                     <i class="fa-solid fa-square-check"></i>
-                                    <!-- <input type="checkbox" class="taxonomy1-checkbox" name="taxonomy1-checkbox" value="<?php echo $term->slug; ?>"> -->
-                                    <input type="checkbox" class="<?php echo $amenities_key; ?>-taxonomy" name="taxonomy1-checkbox" value="<?php echo $term->slug; ?>">
+                                    <input type="checkbox" class="taxonomy1-checkbox" name="taxonomy1-checkbox" value="<?php echo $term->slug; ?>">
                                     <?php echo $term->name; ?>
                                 </label>
                                 <br>
@@ -160,130 +281,6 @@ $amenities = get_terms(array(
 
 // ajax calls and event binding for filters
 
-// TODO: just remove jQuery and replace with builtin JS methods,
-// we're not saving ourselves any work with this and we're not gaining anything either
-jQuery(document).ready(function($) {
-
-    // quick fix for request race condition in the request response order: 
-    // pushes latest request status to the stack, updates when the response is received,
-    // and responses that arrive later than more recent requests will be ignored.
-    // TODO: the filter DOM can still show incorrect filters applied when a response package is lost
-    const hasRequestResolvedStack = [];
-
-    // store taxonomy strings
-    const taxonomies = [
-        '<?php echo $amenities_key ?>',
-        '<?php echo $available_for_key ?>'
-    ];
-
-    // stores all the info needed to retrieve the state of each filter
-    let taxonomyTermsData = [];
-
-    taxonomies.forEach(function (taxonomy, taxonomyIndex) {
-        let elementSelector = '.' + taxonomy + '-taxonomy';
-        let elements = $(elementSelector);
-        if (elements.length == 0) {
-            console.warn(`Query returned 0 elements with ".${elementSelector}" class.`);
-            return;
-        }
-        let elementTag = elements[0].tagName;
-        let termsData = {
-            taxonomy,
-            taxonomyIndex,
-            elementTag,
-            elementSelector,
-            getTermsFunction: null,
-        };
-        switch (elementTag) {
-            case 'INPUT':
-                termsData.getTermsFunction = () => getCheckboxTerms(elementSelector);
-                break;
-            case 'SELECT':
-                termsData.getTermsFunction = () => getSelectElementTerms(elementSelector);
-                break;
-            default:
-                console.warn(`Element tag not supported: <${elementTag}>.`);
-                // TODO: handle this case
-                return;
-        }
-
-        taxonomyTermsData.push(termsData);
-
-        for(let element of elements) {
-            $(element).change(function () {
-                updateFilteredPosts();
-            })
-        }
-    })
-
-    function getCheckboxTerms(selector) {
-		let data = [...document.querySelectorAll(selector + ':checked')].map(x => x.value);
-		return data.length ? data : undefined;
-    }
-
-    function getSelectElementTerms(selector) {
-        return document.querySelector(selector).value;
-    }
-
-    function updateFilteredPosts() {
-        let requestID = hasRequestResolvedStack.length;
-        // push initial request state to stack: resolved=false
-        hasRequestResolvedStack.push(false);
-
-        let data = Object.assign(getTaxonomyFilters(), {
-            action: 'custom_filter',
-            nonce: '<?php echo wp_create_nonce("ajax-filter-nonce"); ?>',
-        });
-        
-        triggerFilteredPostsRefreshingState();
-        
-        $.post('<?php echo admin_url("admin-ajax.php"); ?>', data, function(response) {
-            // check if any of the later requests have been resolved
-            let hasLaterRequestResolved = hasRequestResolvedStack.slice(requestID).reduce((a, b) => a || b, false);
-            // update request state
-            hasRequestResolvedStack[requestID] = true;
-            // don't overwrite the DOM if the latest request had already written to it
-            if (hasLaterRequestResolved) {
-                return;
-            }
-            // write the response to the dom
-            $('#filtered-posts').html(response);
-        });
-    }
-
-    function getTaxonomyFilters() {
-        let data = {};
-
-        // constructs the following object:
-        // {
-        //		taxonomy1: taxonomy1,
-        //		terms1: terms1,
-        //		taxonomy2: taxonomy2,
-        //		terms2: terms2,
-        //		...
-        // }
-        taxonomyTermsData.forEach(function ({taxonomy, taxonomyIndex, elementSelector, elementTag, getTermsFunction}) {
-            let index = taxonomyIndex + 1;
-            let terms = getTermsFunction();
-			if (!terms) {
-				return;
-			}
-            data['taxonomy' + index] = taxonomy;
-			data['terms' + index] = terms;
-        })
-
-        return data;
-    }
-
-    // TODO: could set timer here for timed out requests that can restore filters to
-    // match the last valid response's filters, need to save filters state then
-    function triggerFilteredPostsRefreshingState() {
-        // show that the list is refreshing
-        $('#filtered-posts').html('Refreshing...');
-    }
-});
-
-/*
 jQuery(document).ready(function($) {
 
     // quick fix for request race condition in the request response order: 
@@ -293,6 +290,9 @@ jQuery(document).ready(function($) {
     const hasRequestResolvedStack = [];
 
     $('.taxonomy1-checkbox, .taxonomy2-checkbox').change(function() {
+        // TODO: rewrite to use multidimensional arrays, making the code generalized with no need of rewriting
+        // for different filters (aka. complete reuse through jobs, events, blog, accommodations, etc.)
+        // IMPORTANT - the above rewrite requires some additional PHP or PHP refactoring as well
         let taxonomy1 = '<?php echo $amenities_key ?>';
         let taxonomy2 = '<?php echo $available_for_key ?>';
         let terms1 = [];
@@ -335,7 +335,6 @@ jQuery(document).ready(function($) {
         });
     });
 });
-*/
 
 // switch item card grid & list layout
 
@@ -409,5 +408,12 @@ function initFilterDialog() {
 
 window.addEventListener("load", initFilterDialog);
 </script>
+
+
+
+
+
+
+
 
 <?php get_footer(); ?>

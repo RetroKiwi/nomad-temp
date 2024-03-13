@@ -204,38 +204,29 @@ if( function_exists('acf_add_options_page') ) {
 	  ));
    }
 
-    add_action( 'init', 'register_acf_blocks' );
-    function register_acf_blocks() {
-        // banners
-        register_block_type( __DIR__ . '/blocks/banner-hero-homepage' );
-        register_block_type( __DIR__ . '/blocks/discounts-static-banner' );
-        register_block_type( __DIR__ . '/blocks/restaurants-nearby' );
-        register_block_type( __DIR__ . '/blocks/site-wide-banner' );
-        // listings, showcases and highlights
-        register_block_type( __DIR__ . '/blocks/find-a-restaurant' );
-        register_block_type( __DIR__ . '/blocks/items-showcase' );
-        register_block_type( __DIR__ . '/blocks/page-link-strips-special-left' );
-        register_block_type( __DIR__ . '/blocks/page-link-strips-special-right' );
-        register_block_type( __DIR__ . '/blocks/place-to-stay-grid' );
-        // titles and headings
-        register_block_type( __DIR__ . '/blocks/main-section-title' );
-        register_block_type( __DIR__ . '/blocks/page-title-special' );
-        register_block_type( __DIR__ . '/blocks/section-title-with-description' );
-        // filters
-        register_block_type( __DIR__ . '/blocks/all-jobs-filter' );
-        register_block_type( __DIR__ . '/blocks/all-services-filter' );
-        register_block_type( __DIR__ . '/blocks/buy-rent-form-filter' );
-        register_block_type( __DIR__ . '/blocks/category-filter' );
-        register_block_type( __DIR__ . '/blocks/general-filter' );
-        register_block_type( __DIR__ . '/blocks/items-showcase-filter' );
-        register_block_type( __DIR__ . '/blocks/scrolling-text-stripe' );
-        // utility
-        register_block_type( __DIR__ . '/blocks/invisible-anchor-tag' );
-        register_block_type( __DIR__ . '/blocks/vertical-spacing' );
-
-        // idk
-        register_block_type( __DIR__ . '/blocks/single-blog-items' );
-    }
+   add_action( 'init', 'register_acf_blocks' );
+   function register_acf_blocks() {
+	   register_block_type( __DIR__ . '/blocks/site-wide-banner' );
+	   register_block_type( __DIR__ . '/blocks/banner-hero-homepage' );
+	   register_block_type( __DIR__ . '/blocks/items-showcase' );
+	   register_block_type( __DIR__ . '/blocks/item-row-list' );
+	   register_block_type( __DIR__ . '/blocks/single-blog-items' );
+	   register_block_type( __DIR__ . '/blocks/discounts-static-banner' );
+	   register_block_type( __DIR__ . '/blocks/page-title-special' );
+	   register_block_type( __DIR__ . '/blocks/page-link-strips-special-left' );
+	   register_block_type( __DIR__ . '/blocks/page-link-strips-special-right' );
+	   register_block_type( __DIR__ . '/blocks/restaurants-nearby' );
+	   register_block_type( __DIR__ . '/blocks/place-to-stay-grid' );
+	   register_block_type( __DIR__ . '/blocks/find-a-restaurant' );
+	   register_block_type( __DIR__ . '/blocks/items-showcase-filter' );
+	   register_block_type( __DIR__ . '/blocks/category-filter' );
+	   register_block_type( __DIR__ . '/blocks/scrolling-text-stripe' );
+	   register_block_type( __DIR__ . '/blocks/buy-rent-form-filter' );
+	   register_block_type( __DIR__ . '/blocks/general-filter' );
+	   register_block_type( __DIR__ . '/blocks/test-block-nomadtribe' );
+	   register_block_type( __DIR__ . '/blocks/all-services-filter' );
+	   register_block_type( __DIR__ . '/blocks/all-jobs-filter' );
+   }
 
 
    function enqueue_my_script() {
@@ -486,30 +477,30 @@ function load_more_posts() {
 
     if ($query->have_posts()) :
         while ($query->have_posts()) : $query->the_post(); ?>
-            <div class="item-card">
-                <div class="item-card-image">
-                    <?php if (has_post_thumbnail()) : ?>
-                        <?php the_post_thumbnail(); ?>
-                    <?php else : ?>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/media/images/squareimgplaceholder.png" alt="">
-                    <?php endif; ?>
-                </div>
-                <div class="item-card-content">
-                    <div class="item-card-brief">
-                        <!-- <small class="text-gray-hover"><?php echo get_the_category_list(', '); ?></small> -->
-                        <small class="text-gray-hover"><?php // echo get_the_trems(); ?></small>
-                        <small class="text-gray-hover"><i class="fa-regular fa-calendar"></i><?php echo get_the_date(); ?></small>
+           <a href="<?php the_permalink(); ?>" class="contents">
+                    <div class="item-card nomad-corners">
+                        <div class="item-card-image nomad-corners image-cover ratio-4-3">
+                            <?php if (has_post_thumbnail()) : ?>
+                                <?php the_post_thumbnail(); ?>
+                            <?php else : ?>
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/media/images/squareimgplaceholder.png" alt="">
+                            <?php endif; ?>
+                        </div>
+                        <div class="item-card-content">
+                            <div class="flex-row flex-between text-light-gray uppercase" style="margin-top: 1rem">
+                                <small><?php echo get_the_category_list(', '); ?></small>
+                                <small><?php echo get_the_date(); ?></small>
+                            </div>
+                            <h3 class="text-red text-dense-lines"><?php the_title(); ?></h3>
+                            <p class="text-justify"><?php echo wp_trim_words(get_the_content(), 20); ?></p>
+                        </div>
+                        <div>
+                            <a href="<?php the_permalink(); ?>">
+                                <button class="primary size-large">Read more</button>
+                            </a>
+                        </div>
                     </div>
-                    <h3 class="text-white-hover"><?php the_title(); ?></h3>
-                    <p class="text-light-gray-hover"><?php echo wp_trim_words(get_the_content(), 20); ?></p>
-                </div>
-                <div class="item-card-action-button">
-                    <a href="<?php the_permalink(); ?>">
-                        <button class="primary size-large">Read more</button>
-                    </a>
-                </div>
-            </div>
-
+                </a>
 <?php
         endwhile;
     endif;
@@ -581,199 +572,45 @@ function custom_ajax_filter() {
 
     $query = new WP_Query($args);
 
-    if ($query->have_posts()) {
-        while ($query->have_posts()) {
-            $query->the_post();
-            echo_item_card_html();
-        }
+    if ($query->have_posts()) :
+        while ($query->have_posts()) : $query->the_post();
+            // Output your posts here using the_content(), the_title(), etc.?>
+          <a href="<?php the_permalink(); ?>" class="contents">
+                    <div class="item-card nomad-corners">
+                        <div class="item-card-image nomad-corners image-cover ratio-4-3">
+                            <?php if (has_post_thumbnail()) : ?>
+                                <?php the_post_thumbnail(); ?>
+                            <?php else : ?>
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/media/images/squareimgplaceholder.png" alt="">
+                            <?php endif; ?>
+                        </div>
+                        <div class="item-card-content">
+                            <div class="flex-row flex-between text-light-gray uppercase" style="margin-top: 1rem">
+                                <small><?php // echo get_the_trems(); ?></small>
+                                <small><?php echo get_the_date(); ?></small>
+                            </div>
+                            <h3 class="text-red text-dense-lines"><?php the_title(); ?></h3>
+                            <p class="text-justify"><?php echo wp_trim_words(get_the_content(), 20); ?></p>
+                        </div>
+                        <div>
+                            <a href="<?php the_permalink(); ?>">
+                                <button class="primary size-large">Read more</button>
+                            </a>
+                        </div>
+                    </div>
+                </a>
+<?php
+        endwhile;
         wp_reset_postdata();
-    } else {
+    else :
         echo 'No posts found';
-    }
-
-    // if ($query->have_posts()) :
-    //     while ($query->have_posts()) :
-    //         $query->the_post();
-    //         echo_item_card_html();
-    //     endwhile;
-    //     wp_reset_postdata();
-    // else :
-    //     echo 'No posts found';
-    // endif;
+    endif;
 
     die();
 }
 add_action('wp_ajax_custom_filter', 'custom_ajax_filter');
 add_action('wp_ajax_nopriv_custom_filter', 'custom_ajax_filter');
 
-// just two quick utility functions
-function acf_field_to_name($field) {
-    return get_term($field)->name;
-}
-function acf_field_array_to_comma_separated($array) {
-    return implode(', ', array_map('acf_field_to_name', $array));
-}
-
-
-// all the styles defined in one place, much easier to work with
-// call after the_post() to echo the listing as .item-card HTML
-function echo_item_card_html($post_type = false) {
-    $default_thumbnail_url = site_url() . '/wp-content/uploads/2024/01/LARGE_SYMBOL_LOGO_THICK_BORDER.png';
-
-    if (!$post_type) {
-        global $post;
-        $post_type = get_post_type($post);
-        // $post_type = 'post';
-    }
-
-    $is_event = $post_type == 'event';
-    $is_job = $post_type == 'job';
-    $is_accommodation = $post_type == 'location';
-    $is_service = $post_type == 'service' || $post_type == 'restaurant';
-    $is_blog = $post_type == 'post';
-    ?>
-
-    <div class="item-card">
-        <div class="item-card-image">
-            <?php if (has_post_thumbnail()) : ?>
-                <?php the_post_thumbnail(); ?>
-            <?php else : ?>
-                <img src="<?php echo $default_thumbnail_url; ?>" alt="">
-            <?php endif; ?>
-        </div>
-        <div class="item-card-content">
-
-            <?php
-                $categories = get_the_category_list(', ');
-                $date = get_the_date();
-                $title = get_the_title();
-
-                if ($is_event) : ?>
-                <?php
-                    $event_listing_taxonomy = get_field('event_listing_taxonomy');
-                    $event_location = get_field('event_location');
-                    $event_start_date = get_field('event_start_date');
-                    $event_end_date = get_field('event_end_date');
-                    $event_duration = $event_start_date . ($event_end_date ? ' - ' . $event_end_date : '');
-                    $event_short_description = get_field('event_short_description');
-                    $event_ticket_price = get_field('event_ticket_price');
-                ?>
-
-                <div class="item-card-brief">
-                    <small class="text-gray-hover"><i class="fa-solid fa-tag"></i><?php echo 'Event, ' . $event_listing_taxonomy; ?></small>
-                    <small class="text-gray-hover"><i class="fa-regular fa-calendar"></i><?php echo $event_duration; ?></small>
-                </div>
-                <div class="item-card-brief">
-                    <small class="text-gray-hover"><i class="fa-solid fa-location-dot"></i><?php echo $event_location; ?></small>
-                    <small class="text-gray-hover"><i class="fa-regular fa-coins"></i><?php echo $event_ticket_price; ?></small>
-                </div>
-                <h3 class="text-white-hover"><?php echo $title; ?></h3>
-                <p class="text-light-gray-hover"><?php echo $event_short_description; ?></p>
-                
-            <?php elseif ($is_job) : ?>
-                <?php
-                    $job_languages = get_field('job_languages');
-                    $job_location = get_term( get_field('select_location_type') )->name;
-                    // TODO: rename "job_title" to "job_position", not to be confused with other titles, like post title
-                    $job_title = get_field('job_title')->name;
-                    $job_salary = get_field('enter_salary');
-                    $job_type = get_term(get_field('job_type'))->name;
-                ?>
-                
-                <div class="item-card-brief">
-                    <small class="text-gray-hover"><i class="fa-solid fa-tag"></i><?php echo 'Job listing, ' . $job_type; ?></small>
-                    <small class="text-gray-hover"><i class="fa-regular fa-calendar"></i><?php echo $date; ?></small>
-                </div>
-                <div class="item-card-brief hide-hover">
-                    <small class="text-gray-hover"><i class="fa-solid fa-comment"></i>
-                        <?php echo acf_field_array_to_comma_separated($job_languages); ?>
-                    </small>
-                    <small class="text-gray-hover"><i class="fa-solid fa-location-dot"></i><?php echo $job_location; ?></small>
-                </div>
-                <h3 class="text-white-hover"><?php echo $job_title; ?></h4>
-                <p class="text-light-gray-hover"><?php echo $title; ?></p>
-                <?php if ($job_salary):?>
-                    <div class="item-card-brief">
-                        <big class="text-gray-hover"><i class="fa-solid fa-coins"></i><?php echo $job_salary;?></big>
-                    </div>
-                <?php endif;?>
-
-            <?php elseif ($is_accommodation) : ?>
-                <?php
-                    $accomodation_category = get_term(get_field('accomodation_category'));
-                    $accomodation_rent_duration = acf_field_array_to_comma_separated(get_field('accomodation_rent_duration'));
-                    $accomodation_amenities = acf_field_array_to_comma_separated(get_field('accomodation_amenities'));
-                    $accomodation_rent_or_buy = get_term(get_field('accomodation_rent_or_buy'))->name;
-                    $accomodation_rent_or_buy = $accomodation_rent_or_buy == 'buy' ? 'purchase' : $accomodation_rent_or_buy;
-                    $accomodation_location = get_term(get_field('accomodation_location'))->name;
-                    $accomodation_short_description = get_field('accomodation_short_description');
-                    $accomodation_square_footage = get_field('accomodation_square_footage');
-                    $accomodation_price = get_field('accomodation_price');
-                ?>
-
-                <div class="item-card-brief">
-                    <small class="text-gray-hover"><i class="fa-solid fa-tag"></i><?php echo $accomodation_rent_duration; ?></small>
-                    <small class="text-gray-hover"><i class="fa-solid fa-location-dot"></i><?php echo $accomodation_location; ?></small>
-                </div>
-                <div class="item-card-brief hide-hover">
-                    <small class="text-gray-hover"><i class="fa-solid fa-hand-holding-dollar"></i>Available for: <?php echo $accomodation_rent_or_buy; ?></small>
-                    <small class="text-gray-hover"><i class="fa-solid fa-house"></i><?php echo $accomodation_category; ?></small>
-                </div>
-                <h3 class="text-white-hover"><?php echo $title; ?></h4>
-                <p class="text-light-gray-hover"><?php echo $accomodation_short_description; ?></p>
-				<?php if ($accomodation_amenities):?>
-                    <div class="item-card-brief">
-                        <span class="text-gray-hover"><i class="fa-solid fa-wrench"></i><?php echo $accomodation_amenities; ?></span>
-                    </div>
-                <?php endif; ?>
-				<?php if ($accomodation_square_footage):?>
-                    <div class="item-card-brief">
-                        <span class="text-gray-hover"><i class="fa-solid fa-border-none"></i><?php echo $accomodation_square_footage; ?></span>
-                    </div>
-                <?php endif; ?>
-				<?php if ($accomodation_price):?>
-                    <div class="item-card-brief">
-                        <span class="text-gray-hover"><i class="fa-solid fa-coins"></i><?php echo $accomodation_price; ?></span>
-                    </div>
-                <?php endif; ?>
-                    
-
-            <!-- do we need a separate one for bars and restaurants -->
-            <?php elseif ($is_service) : ?>
-                <?php
-                    $service_type = get_term(get_field('service_type'))->name;
-                    $service_location = get_term(get_field('service_location'))->name;
-                ?>
-
-                <div class="item-card-brief">
-                    <small class="text-gray-hover"><i class="fa-solid fa-tag"></i><?php echo 'Service, ' . $service_type; ?></small>
-                    <small class="text-gray-hover"><i class="fa-solid fa-location-dot"></i><?php echo $service_location; ?></small>
-                </div>
-                <h3 class="text-white-hover"><?php echo $title; ?></h3>
-                <p class="text-light-gray-hover"><?php echo wp_trim_words(get_the_content(), 20); ?></p>
-
-            <?php
-                // if ($is_blog) :
-                // yes, this is the default
-                else: ?>
-
-                <div class="item-card-brief">
-                    <small class="text-gray-hover"><i class="fa-solid fa-tag"></i><?php echo $categories; ?></small>
-                    <small class="text-gray-hover"><i class="fa-regular fa-calendar"></i><?php echo $date; ?></small>
-                </div>
-                <h3 class="text-white-hover"><?php echo $title; ?></h3>
-                <p class="text-light-gray-hover"><?php echo wp_trim_words(get_the_content(), 20); ?></p>
-            <?php endif; ?>
-
-        </div>
-        <div class="item-card-action-button">
-            <a href="<?php the_permalink(); ?>">
-                <button class="primary size-large"><?php echo ($is_blog ? 'Read more' : 'See details'); ?></button>
-            </a>
-        </div>
-    </div>
-    <?php
-}
 
 
 
