@@ -1,0 +1,54 @@
+{
+    "key": "group_65e1f7ff307e6",
+    "title": "Category Filter",
+    "fields": [
+        {
+            "key": "field_65e1f7ff2f000",
+            "label": "Select Post Type To filter",
+            "name": "select_post_type_to_filter",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "restaurant": "Restaurant",
+                "post": "Blog",
+                "service": "Service",
+                "event": "Event",
+                "accomodation": "Accomodation"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/category-filter"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1709308196
+}
